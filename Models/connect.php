@@ -1,33 +1,26 @@
 <?php
-function OpenDB()
-{
+// Datos de conexión
+$usuario = "kerat_restaurante";        // Cambia por tu usuario Oracle
+$contrasena = "123";  // Cambia por tu contraseña
+$cadenaConexion = "(DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+    (CONNECT_DATA =
+        (SERVER = DEDICATED)
+        (SERVICE_NAME = XE)         
+    )
+)";
 
-    return  mysqli_connect("127.0.0.1:3307", "root", "", "MNDatabase");
+// Conectar a Oracle
+$conn = oci_connect($usuario, $contrasena, $cadenaConexion);
+
+if (!$conn) {
+    $e = oci_error();
+    echo "Error de conexión: " . htmlentities($e['message'], ENT_QUOTES);
+    exit;
+} else {
+    echo "Conexión exitosa a Oracle!";
 }
 
-
-
-function CloseDB($context)
-{
-
-
-    mysqli_close($context);
-}
-
-
-function RegistrarError($error)
-{
-    $context = OpenDB();
-
-
-    $message = mysqli_real_escape_string($context, $error->getMessage());
-
-
-
-    $sp = "CALL RegistrarError('$message')";
-    $context->query($sp);
-
-
-    ///CERRARR LA BASE DE DATOS
-    CloseDB($context);
-}
+// No olvides cerrar la conexión cuando termines
+oci_close($conn);
+?>
