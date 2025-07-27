@@ -11,7 +11,8 @@ $cadenaConexion = "(DESCRIPTION =
 )";
 
 // Conectar a Oracle
-$conn = oci_connect($usuario, $contrasena, $cadenaConexion);
+putenv("NLS_LANG=AMERICAN_AMERICA.AL32UTF8");
+$conn = oci_connect($usuario, $contrasena, $cadenaConexion,'AL32UTF8');
 
 if (!$conn) {
     $e = oci_error();
@@ -23,4 +24,3 @@ if (!$conn) {
 
 // No olvides cerrar la conexión cuando termines
 oci_close($conn);
-?>
