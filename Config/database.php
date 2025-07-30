@@ -1,4 +1,4 @@
-<?php
+<?php   
     class Database {
         // Parámetros de conexión
         private $usuario = 'kerat_restaurante';

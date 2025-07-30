@@ -10,7 +10,7 @@ function AddCss()
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Proyecto lenguajes de admin de base de datos</title>
+    <title>Login | Kerat</title>
 
     <link href="../Estilos/style.min.css" rel="stylesheet">
 

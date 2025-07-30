@@ -1,11 +1,13 @@
 <?php
+    session_start();
+    
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/LENGUAJES_ADMIN/Views/layoutExterno.php';
 
-include_once $_SERVER["DOCUMENT_ROOT"] . '/LENGUAJES_ADMIN/Controllers/homeController.php';
-
-include_once $_SERVER["DOCUMENT_ROOT"] . '/LENGUAJES_ADMIN/Views/layoutExterno.php';
-
+    if(isset($_SESSION["usuario"])){
+        header("Location: principal.php");
+        exit();
+    }
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -21,8 +23,6 @@ AddCss();
 
 <body>
     <div class="main-wrapper">
-
-
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(../Imagenes/auth-bg.jpg) no-repeat center center;">
             <div class="auth-box">
                 <div id="loginform">
@@ -33,7 +33,7 @@ AddCss();
                     <!-- Form -->
                     <div class="row">
                         <div class="col-12">
-                            <form class="form-horizontal m-t-20" action="" method="POST">
+                            <form class="form-horizontal m-t-20" action="../../Controllers/HomeController.php" method="POST">
 
 
 
@@ -51,6 +51,10 @@ AddCss();
                                     <input id="txtContrasenna" name="txtContrasenna" type="password" class="form-control form-control-lg" placeholder="Contraseña">
                                 </div>
 
+                                <!-- Validar si hay algun error -->
+                                <?php if (isset($_GET["error"])): ?>
+                                    <p style="color: red;">Usuario o contraseña incorrectos</p>
+                                <?php endif; ?>
 
                                 <div class="form-group text-center">
                                     <div class="col-xs-12 p-b-20">

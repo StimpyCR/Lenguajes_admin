@@ -1,26 +1,11 @@
 <?php
-require_once __DIR__ . '/Models/Prueba.php';
+    session_start();
 
-
-$prueba = new Prueba();
-$prueba->mesasDisponibles();
-
-// header("location: Views/Home/login.php");
+    if (isset($_SESSION["usuario"])) {
+        header("Location: Views/Home/principal.php");
+        exit();
+    } else {
+        header("location: Views/Home/login.php");
+        exit();
+    }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <a href="views/mesas.php">Ver mesas disponibles</a>
-
-</html>
-</body>
-
-</html>
-<html>
