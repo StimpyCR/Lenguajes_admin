@@ -31,7 +31,14 @@
             <h1 class="display-4">Bienvenido a Kerat</h1>
             <p class="lead">Donde cada plato cuenta una historia</p>
         </div>
+
+        <!-- Boton de logout (provisional) -->
+        <form method="POST" action="logout.php">
+            <button type="submit">Cerrar sesión</button>
+        </form>
+        
     </header>
+
 
     <!-- FOOTER -->
 
