@@ -164,3 +164,138 @@ html {
         transform: translateY(0);
     }
 }
+
+
+
+.menu-section {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.menu-header h1 {
+    font-size: 42px;
+    color: #f0e6d2;
+    margin-bottom: 10px;
+}
+
+.menu-header p {
+    font-size: 18px;
+    color: #c8b88a;
+    margin-bottom: 30px;
+}
+
+.menu-search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.menu-search form {
+    display: flex;
+    border: 2px solid black;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 400px;
+    width: 100%;
+}
+
+.menu-search input[type="text"] {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.menu-search button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 0 20px;
+}
+
+.menu-card {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: #000;
+}
+
+.menu-card:hover {
+    transform: scale(1.03);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.menu-title {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.btn-fav {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: white;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
