@@ -1,0 +1,108 @@
+<?php
+include_once $_SERVER["DOCUMENT_ROOT"] . '/LENGUAJES_ADMIN/Views/layoutInterno.php';
+?>
+
+<!DOCTYPE html>
+<html>
+
+<?php
+AddCss();
+?>
+
+<body>
+    <div id="main-wrapper">
+        <?php
+        ShowHeader();
+        ShowSideBar();
+        ?>
+
+        <div class="page-wrapper">
+            <div class="container-fluid">
+
+                <div class="card shadow p-4">
+                    <h2 class="mb-4 text-center">Gestión de Productos</h2>
+
+                    <!-- FORMULARIO CRUD -->
+                    <form method="POST" action="procesar_producto.php" enctype="multipart/form-data">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="nombre" class="form-label">Nombre del Producto</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: Pizza Margarita" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="precio" class="form-label">Precio</label>
+                                <input type="number" class="form-control" id="precio" name="precio" step="0.01" placeholder="Ej: 9.99" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Describe el platillo..."></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imagen" class="form-label">Imagen del Producto</label>
+                            <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" name="accion" value="agregar" class="btn btn-success">
+                                <i class="fas fa-plus"></i> Agregar
+                            </button>
+                            <button type="submit" name="accion" value="modificar" class="btn btn-warning">
+                                <i class="fas fa-edit"></i> Modificar
+                            </button>
+                            <button type="submit" name="accion" value="eliminar" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- TABLA DE PRODUCTOS -->
+                <div class="card mt-4 shadow p-3">
+                    <h4 class="mb-3">Lista de Productos</h4>
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Descripción</th>
+                                <th>Imagen</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aquí se llenarán los productos dinámicamente -->
+                            <tr>
+                                <td>1</td>
+                                <td>Pizza Margarita</td>
+                                <td>$9.99</td>
+                                <td>Pizza clásica italiana con tomate, mozzarella y albahaca.</td>
+                                <td><img src="https://images.unsplash.com/photo-1601924638867-3ecb1a30b99b" alt="Pizza Margarita" width="80"></td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning">Editar</button>
+                                    <button class="btn btn-sm btn-danger">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <?php
+            ShowFooter();
+            ?>
+        </div>
+    </div>
+
+    <div class="chat-windows"></div>
+
+    <?php
+    AddJs();
+    ?>
+</body>
+
+</html>

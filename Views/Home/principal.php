@@ -32,12 +32,14 @@
             <p class="lead">Donde cada plato cuenta una historia</p>
         </div>
 
-        <!-- Boton de logout (provisional) -->
-        <form method="POST" action="logout.php">
-            <button type="submit">Cerrar sesión</button>
-        </form>
-        
+
     </header>
+
+
+
+    <!-- Bootstrap JS y Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
 
     <!-- FOOTER -->

@@ -22,9 +22,14 @@
                     A
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-animate" aria-labelledby="adminDropdown">
-                    <li><a class="dropdown-item" href="#">Gestión de Productos</a></li>
+                    <li><a class="dropdown-item" href="../Productos/productos.php">Gestión de Productos</a></li>
                     <li><a class="dropdown-item" href="#">Reportes</a></li>
-                    <li><a class="dropdown-item" href="#">Configuraciones</a></li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <!-- Nueva opción de Productos -->
+
                 </ul>
             </div>
 
@@ -34,9 +39,13 @@
                     <i class="fas fa-user"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-animate" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#">Perfil</a></li>
-                    <li><a class="dropdown-item" href="#">Ajustes</a></li>
-                    <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item" href="../Home/consultarPerfil.php">Perfil</a></li>
+                    <li>
+                        <form method="POST" action="logout.php" style="margin: 0;">
+                            <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                        </form>
+                    </li>
+
                 </ul>
             </div>
         </div>
