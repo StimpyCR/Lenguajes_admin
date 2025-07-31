@@ -23,6 +23,8 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-animate" aria-labelledby="adminDropdown">
                     <li><a class="dropdown-item" href="../Productos/productos.php">Gestión de Productos</a></li>
+                    <li><a class="dropdown-item" href="../Ingredientes/ingredientes.php">Gestión de Ingredientes</a></li>
+                    <li><a class="dropdown-item" href="../Sucursales/sucursales.php">Gestión de Sucurales</a></li>
                     <li><a class="dropdown-item" href="#">Reportes</a></li>
 
                     <li>

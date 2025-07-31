@@ -20,35 +20,25 @@ AddCss();
             <div class="container-fluid">
 
                 <div class="card shadow p-4">
-                    <h2 class="mb-4 text-center">Gestión de Productos</h2>
+                    <h2 class="mb-4 text-center">Gestión de Ingredientes</h2>
 
                     <!-- FORMULARIO CRUD -->
-                    <form method="POST" action="procesar_producto.php" enctype="multipart/form-data">
+                    <form method="POST" action="" enctype="multipart/form-data">
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="nombre" class="form-label">Nombre del Producto</label>
-                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="Ej: Pizza Margarita" required>
+                                <label for="nombre" class="form-label">Nombre del ingrediente</label>
+                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="Ej: Culantro" required>
                             </div>
-                        </div>
 
+                        </div>
 
                         <div class="mb-3">
-                            <label for="descripcion" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="txtDescripcion" name="txtDescripcion" rows="3" placeholder="Describe el platillo..."></textarea>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <label for="precio" class="form-label">Precio</label>
-                            <input type="number" class="form-control" id="txtPrecio" name="txtPrecio" step="0.01" placeholder="Ej: 9.99" required>
+                            <label for="cantidad" class="form-label">Cantidad del Producto</label>
+                            <input type="number" class="form-control" id="txtCantidadProducto" name="txtCantidadProducto" placeholder="Cantidad en Stock" min="0" required>
                         </div>
 
 
 
-                        <div class="mb-3">
-                            <label for="imagen" class="form-label">Imagen del Producto</label>
-                            <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
-                        </div>
 
                         <div class="d-flex justify-content-between">
                             <button type="submit" name="accion" value="agregar" class="btn btn-success">
@@ -61,19 +51,19 @@ AddCss();
                                 <i class="fas fa-trash"></i> Eliminar
                             </button>
                         </div>
+
                     </form>
                 </div>
 
                 <!-- TABLA DE PRODUCTOS -->
                 <div class="card mt-4 shadow p-3">
-                    <h4 class="mb-3">Lista de Productos</h4>
+                    <h4 class="mb-3">Lista de Ingredientes</h4>
                     <table class="table table-striped table-hover">
                         <thead class="table-dark">
                             <tr>
-                                <th>ID</th>
+                                <th>ID del Ingrediente</th>
                                 <th>Nombre</th>
-                                <th>Precio</th>
-                                <th>Descripción</th>
+                                <th>Cantidad del Producto</th>
 
                             </tr>
                         </thead>
@@ -83,12 +73,7 @@ AddCss();
                                 <td>1</td>
                                 <td>Pizza Margarita</td>
                                 <td>$9.99</td>
-                                <td>Pizza clásica italiana con tomate, mozzarella y albahaca.</td>
 
-                                <td>
-                                    <button class="btn btn-sm btn-warning">Editar</button>
-                                    <button class="btn btn-sm btn-danger">Eliminar</button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>

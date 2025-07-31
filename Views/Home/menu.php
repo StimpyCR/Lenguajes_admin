@@ -5,6 +5,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/LENGUAJES_ADMIN/Views/layoutInterno.p
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="/LENGUAJES_ADMIN/Views/Estilos/menu.css">
+<link rel="stylesheet" href="/LENGUAJES_ADMIN/Views/Estilos/menuModal.css"> <!-- CSS del modal -->
 
 <?php
 AddCss();
@@ -30,37 +31,28 @@ AddCss();
                     </div>
                 </div>
 
-                <!-- Botón de Ver Pedido (oculto inicialmente) -->
+                <!-- Botón de Ver Pedido -->
                 <a href="../Menu/verPedido.php" class="pedido-button" id="pedidoButton">
                     <i class="fas fa-receipt"></i> Ver mi pedido
                 </a>
+
                 <!-- Contenedor de Platillos -->
                 <div class="menu-container">
-
-                    <!-- Cada platillo tiene botón de "Agregar al pedido" -->
-                    <div class="menu-card" onclick="agregarAlPedido('Pizza Margarita')">
+                    <div class="menu-card" onclick="mostrarDescripcion('Pizza Margarita', 'Clásica pizza italiana con salsa de tomate, mozzarella fresca y albahaca.', [
+                        'https://images.unsplash.com/photo-1601924638867-3ecb1a30b99b',
+                        'https://images.unsplash.com/photo-1603079842089-0284580f49f1',
+                        'https://images.unsplash.com/photo-1506354666786-959d6d497f1a'
+                    ])">
                         <img src="https://images.unsplash.com/photo-1601924638867-3ecb1a30b99b" alt="Pizza Margarita">
                         <h3>Pizza Margarita</h3>
                     </div>
 
-                    <div class="menu-card" onclick="agregarAlPedido('Hamburguesa Clásica')">
+                    <div class="menu-card" onclick="mostrarDescripcion('Hamburguesa Clásica', 'Jugosa carne de res, queso cheddar, lechuga, tomate y nuestra salsa especial.', [
+                        'https://images.unsplash.com/photo-1550547660-d9450f859349',
+                        'https://images.unsplash.com/photo-1609408140325-462f9d8e6042'
+                    ])">
                         <img src="https://images.unsplash.com/photo-1550547660-d9450f859349" alt="Hamburguesa Clásica">
                         <h3>Hamburguesa Clásica</h3>
-                    </div>
-
-                    <div class="menu-card" onclick="agregarAlPedido('Ensalada César')">
-                        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141" alt="Ensalada César">
-                        <h3>Ensalada César</h3>
-                    </div>
-
-                    <div class="menu-card" onclick="agregarAlPedido('Sushi Roll')">
-                        <img src="https://images.unsplash.com/photo-1512058564366-c9e3c6a4f04b" alt="Sushi Roll">
-                        <h3>Sushi Roll</h3>
-                    </div>
-
-                    <div class="menu-card" onclick="agregarAlPedido('Tacos al Pastor')">
-                        <img src="https://images.unsplash.com/photo-1626085483650-7f7d24f1525c" alt="Tacos al Pastor">
-                        <h3>Tacos al Pastor</h3>
                     </div>
                 </div>
             </div>
@@ -69,36 +61,76 @@ AddCss();
         </div>
     </div>
 
+    <!-- Modal con carrusel y formulario -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <span class="modal-close" onclick="cerrarModal()">&times;</span>
+            <h3 id="modalTitulo"></h3>
+
+            <!-- Carrusel -->
+            <div id="carouselModal" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id="carouselInner"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselModal" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselModal" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+
+            <!-- Descripción del platillo -->
+            <p id="modalDescripcion"></p>
+
+            <!-- Formulario tipo POST -->
+            <form action="" method="POST">
+                <input type="hidden" id="productoInput" name="producto">
+                <div class="form-group text-center">
+                    <div class="col-xs-12 p-b-20">
+                        <button class="btn btn-block btn-lg btn-info" type="submit">
+                            Agregar al pedido
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="chat-windows"></div>
 
     <?php AddJs(); ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap JS y Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-
-    <!-- Script para manejar el pedido -->
     <script>
-        // Mostrar/ocultar el botón de "Ver mi pedido"
+        // Mostrar modal con descripción y carrusel dinámico
+        function mostrarDescripcion(titulo, descripcion, imagenes) {
+            document.getElementById('modalTitulo').innerText = titulo;
+            document.getElementById('modalDescripcion').innerText = descripcion;
+            document.getElementById('productoInput').value = titulo; // ✅ Asignar producto al input hidden
+
+            // Generar imágenes del carrusel
+            const carouselInner = document.getElementById('carouselInner');
+            carouselInner.innerHTML = '';
+            imagenes.forEach((img, index) => {
+                const activeClass = index === 0 ? 'active' : '';
+                carouselInner.innerHTML += `
+                    <div class="carousel-item ${activeClass}">
+                        <img src="${img}" class="d-block w-100" alt="${titulo}">
+                    </div>
+                `;
+            });
+
+            document.getElementById('modalOverlay').style.display = 'flex';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const pedidoButton = document.getElementById('pedidoButton');
             const pedido = JSON.parse(localStorage.getItem('pedido')) || [];
-            if (pedido.length > 0) {
-                pedidoButton.style.display = 'flex';
-            } else {
-                pedidoButton.style.display = 'none';
-            }
+            pedidoButton.style.display = pedido.length > 0 ? 'flex' : 'none';
         });
-
-        // Agregar producto al pedido
-        function agregarAlPedido(producto) {
-            let pedido = JSON.parse(localStorage.getItem('pedido')) || [];
-            pedido.push(producto);
-            localStorage.setItem('pedido', JSON.stringify(pedido));
-
-            // Mostrar el botón cuando se agrega algo
-            document.getElementById('pedidoButton').style.display = 'flex';
-        }
     </script>
 </body>
 

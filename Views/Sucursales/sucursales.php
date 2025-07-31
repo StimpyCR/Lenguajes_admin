@@ -20,30 +20,25 @@ AddCss();
             <div class="container-fluid">
 
                 <div class="card shadow p-4">
-                    <h2 class="mb-4 text-center">Gestión de Productos</h2>
+                    <h2 class="mb-4 text-center">Gestión de Sucursales</h2>
 
                     <!-- FORMULARIO CRUD -->
                     <form method="POST" action="procesar_producto.php" enctype="multipart/form-data">
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label for="nombre" class="form-label">Nombre del Producto</label>
-                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="Ej: Pizza Margarita" required>
+                                <label for="nombre" class="form-label">Nombre </label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: Pizza Margarita" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="precio" class="form-label">Precio</label>
+                                <input type="number" class="form-control" id="precio" name="precio" step="0.01" placeholder="Ej: 9.99" required>
                             </div>
                         </div>
 
-
                         <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="txtDescripcion" name="txtDescripcion" rows="3" placeholder="Describe el platillo..."></textarea>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Describe el platillo..."></textarea>
                         </div>
-
-
-                        <div class="col-md-6">
-                            <label for="precio" class="form-label">Precio</label>
-                            <input type="number" class="form-control" id="txtPrecio" name="txtPrecio" step="0.01" placeholder="Ej: 9.99" required>
-                        </div>
-
-
 
                         <div class="mb-3">
                             <label for="imagen" class="form-label">Imagen del Producto</label>
@@ -74,7 +69,8 @@ AddCss();
                                 <th>Nombre</th>
                                 <th>Precio</th>
                                 <th>Descripción</th>
-
+                                <th>Imagen</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,7 +80,7 @@ AddCss();
                                 <td>Pizza Margarita</td>
                                 <td>$9.99</td>
                                 <td>Pizza clásica italiana con tomate, mozzarella y albahaca.</td>
-
+                                <td><img src="https://images.unsplash.com/photo-1601924638867-3ecb1a30b99b" alt="Pizza Margarita" width="80"></td>
                                 <td>
                                     <button class="btn btn-sm btn-warning">Editar</button>
                                     <button class="btn btn-sm btn-danger">Eliminar</button>
