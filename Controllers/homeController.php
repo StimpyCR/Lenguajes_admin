@@ -5,7 +5,7 @@
     $correo = $_POST["txtCorreo"];
     $contrasena = $_POST["txtContrasenna"];
     
-    $login = new Login();
+    $login = new CrudUsuarios();
     
     if ($login->validarCredenciales($correo, $contrasena)) {
         header("Location: ../Views/Home/principal.php");
