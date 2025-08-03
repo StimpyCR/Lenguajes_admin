@@ -1,0 +1,62 @@
+.mesa-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px;
+    /* Más espacio entre mesas */
+    justify-items: center;
+    align-items: center;
+    height: 70vh;
+    /* Ocupa casi toda la pantalla en altura */
+}
+
+.mesa {
+    width: 100px;
+    /* Más grande */
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    /* Número más grande */
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.mesa:hover {
+    transform: scale(1.1);
+}
+
+.disponible {
+    background-color: #007bff;
+    /* Azul */
+}
+
+.ocupada {
+    background-color: #6c757d;
+    /* Gris */
+    cursor: not-allowed;
+}
+
+.reservada {
+    background-color: orange;
+    /* Naranja */
+}
+
+.seleccionada {
+    background-color: green !important;
+    /* Verde al seleccionar */
+}
+
+.form-reserva {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.form-reserva button {
+    margin-top: 40px;
+    padding: 20px 50px;
+    /* Botón más grande */
+    font-size: 20px;
+}

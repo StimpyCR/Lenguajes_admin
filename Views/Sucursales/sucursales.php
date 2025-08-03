@@ -25,25 +25,14 @@ AddCss();
                     <!-- FORMULARIO CRUD -->
                     <form method="POST" action="procesar_producto.php" enctype="multipart/form-data">
                         <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="nombre" class="form-label">Nombre </label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: Pizza Margarita" required>
+                            <div class="col-12">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control input-grande" id="txtNombre" name="txtNombre" placeholder="Ej: Sucursal Escazu" required>
                             </div>
-                            <div class="col-md-6">
-                                <label for="precio" class="form-label">Precio</label>
-                                <input type="number" class="form-control" id="precio" name="precio" step="0.01" placeholder="Ej: 9.99" required>
-                            </div>
+
+
                         </div>
 
-                        <div class="mb-3">
-                            <label for="descripcion" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Describe el platillo..."></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="imagen" class="form-label">Imagen del Producto</label>
-                            <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
-                        </div>
 
                         <div class="d-flex justify-content-between">
                             <button type="submit" name="accion" value="agregar" class="btn btn-success">

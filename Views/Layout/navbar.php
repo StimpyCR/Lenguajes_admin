@@ -8,9 +8,9 @@
         <div class="d-flex justify-content-center flex-grow-1">
             <ul class="navbar-nav d-flex flex-row justify-content-center align-items-center gap-4">
                 <li class="nav-item"><a class="nav-link" href="../Home/menu.php">Menu</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sobre Nosotros</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Reservar</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Food Safety</a></li>
+                <li class="nav-item"><a class="nav-link" href="../SobreNosotros/aboutUs.php">Sobre Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Reservas/reservas.php">Reservar</a></li>
+
             </ul>
         </div>
 
@@ -25,6 +25,7 @@
                     <li><a class="dropdown-item" href="../Productos/productos.php">Gestión de Productos</a></li>
                     <li><a class="dropdown-item" href="../Ingredientes/ingredientes.php">Gestión de Ingredientes</a></li>
                     <li><a class="dropdown-item" href="../Sucursales/sucursales.php">Gestión de Sucurales</a></li>
+                    <li><a class="dropdown-item" href="../Categorias/categorias.php">Categorias de Platillos</a></li>
                     <li><a class="dropdown-item" href="#">Reportes</a></li>
 
                     <li>

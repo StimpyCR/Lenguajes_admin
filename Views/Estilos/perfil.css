@@ -1,0 +1,93 @@
+/* Fondo y contenedor general */
+.perfil-container {
+    max-width: 600px;
+    margin: auto;
+    padding-top: 30px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Título con animación */
+.perfil-title {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #2c3e50;
+    animation: slideDown 0.7s ease-in-out;
+}
+
+/* Tarjeta del perfil */
+.perfil-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.perfil-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Inputs con estilo moderno */
+.perfil-input {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+    font-size: 1.1rem;
+}
+
+.perfil-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+/* Botón guardar */
+.perfil-btn {
+    background: linear-gradient(45deg, #2980b9, #2c3e50);
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.perfil-btn:hover {
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    transform: scale(1.05);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-form {
+    animation: fadeIn 0.8s ease-in-out;
+}

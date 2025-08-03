@@ -66,10 +66,10 @@ function ShowHeader()
 
                                 <div class="profile-dis scrollable">
                                     <a class="dropdown-item" href="../Home/consultarPerfil.php">
-                                        <i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+                                        <i class="ti-user m-r-5 m-l-5"></i>Mi perfil</a>
                                     <a class="dropdown-item" href="javascript:void(0)">
 
-                                        <i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
+                                        <i class="ti-wallet m-r-5 m-l-5"></i> Cerrar Sesion</a>
 
                                 </div>
 
@@ -93,21 +93,36 @@ function ShowHeader()
     function ShowSideBar()
     {
         echo '
-        <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Home/principal.php" aria-expanded="false"><i class="ti-loop"></i><span class="hide-menu">Back To Home</span></a></li>
-
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>';
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="sidebar-item" style="margin-bottom: 10px;"> 
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Home/principal.php" aria-expanded="false">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        <span class="hide-menu">Volver al Inicio</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" style="margin-bottom: 10px;"> 
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Home/menu.php" aria-expanded="false">
+                        <i class="fa fa-coffee" aria-hidden="true"></i>
+                        <span class="hide-menu">Menu</span>
+                    </a>
+                </li>
+                <li class="sidebar-item" style="margin-bottom: 10px;">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Reservas/reservas.php" aria-expanded="false">
+                        <i class="fa fa-cutlery"></i>
+                        <span class="hide-menu">Reservar Mesa</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>';
     }
 
 
@@ -142,6 +157,8 @@ function AddCss()
     
 
     <link href="../Estilos/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>';
 }
