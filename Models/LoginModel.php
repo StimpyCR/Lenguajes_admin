@@ -48,7 +48,7 @@
                 if (oci_execute($stmtClave)) {
                     // Validar estado y contraseña
                     if ($idEstado == 1 && $contrasenaDesencriptada === $contrasenaIngresada) {
-                        $_SESSION["usuario"] = ["nombre" => $nombre, "rol" => $idRol];
+                        $_SESSION["usuario"] = ["nombre" => $nombre, "rol" => $idRol, "id" => $idUsuario];
                         return true;
                     }
                 }

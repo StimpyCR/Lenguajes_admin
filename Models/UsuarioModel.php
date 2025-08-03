@@ -79,5 +79,42 @@
             oci_free_statement($stmt);
         }
 
+        public function obtenerUsuario ($idUsuario) {
+            $sql = "BEGIN
+                        FIDE_PK_KERAT_PKG.FIDE_OBTENER_USUARIO_SP(:idUsuario, :rol, :estado, :nombre, :telefono, :correo);
+                    END;";
+            $stmt = oci_parse($this->conn, $sql);
+
+            $rol = null;
+            $estado = null;
+            $nombre = null;
+            $telefono = null;
+            $correo = null;
+
+            oci_bind_by_name($stmt, ":idUsuario", $idUsuario);  // In
+            oci_bind_by_name($stmt, ":idRol", $rol);            // Out
+            oci_bind_by_name($stmt, ":idEstado", $estado);      // Out
+            oci_bind_by_name($stmt, ":nombre", $nombre);        // Out
+            oci_bind_by_name($stmt, ":telefono", $telefono);    // Out
+            oci_bind_by_name($stmt, ":correo", $correo);        // Out
+
+            $resultado = oci_execute($stmt);
+
+            if (!$resultado) {
+                $e = oci_error($stmt);
+                throw new Exception("Error al encontrar usuario: " . $e['message']);
+            } else {
+                $usuario = [
+                    "rol" => $rol,
+                    "estado" => $estado,
+                    "nombre" => $nombre,
+                    "telefono" => $telefono,
+                    "correo" => $correo
+                ];
+                return $usuario;
+            }
+            oci_free_statement($stmt);
+
+        }
     }
 ?>
