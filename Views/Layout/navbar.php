@@ -46,6 +46,7 @@
                 <li class="nav-item"><a class="nav-link" href="/LENGUAJES_ADMIN/index.php?controller=home&action=menu">Menú</a></li>
                 <li class="nav-item"><a class="nav-link" href="/LENGUAJES_ADMIN/index.php?controller=reserva&action=index">Reservar</a></li>
                 <li class="nav-item"><a class="nav-link" href="/LENGUAJES_ADMIN/index.php?controller=comentario&action=index">Reseñas</a></li>
+                <li class="nav-item"><a class="nav-link" href="/LENGUAJES_ADMIN/Views/SobreNosotros/aboutUs.php">Nosotros</a></li>
 
             </ul>
         </div>
