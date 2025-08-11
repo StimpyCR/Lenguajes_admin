@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    
+    if(isset($_SESSION["usuario"])){
+        header("Location: principal.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html dir="ltr">
 
@@ -29,22 +38,18 @@
                     <div class="row">
                         <div class="col-12">
 
-                            <form class="form-horizontal m-t-20" action="" method="POST">
+                            <form class="form-horizontal m-t-20" action="/LENGUAJES_ADMIN/index.php?controller=usuario&action=agregar" method="POST">
 
-                                <!-- PHP POR SI NO TIENE UN USUARIO -->
+                                <!-- Sebas, comenté esto porque honestamente no sé que hace jaja -->
                                 <?php
-
-
-                                if (isset($_POST["txtMensaje"])) {
-                                    echo "<div class='alert alert-warning text-center'>" .  $_POST["txtMensaje"] . "</div>";
-                                }
-
-
+                                    // if (isset($_POST["txtMensaje"])) {
+                                    //     echo "<div class='alert alert-warning text-center'>" .  $_POST["txtMensaje"] . "</div>";
+                                    // }
                                 ?>
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
+                                        <span class="input-group-text" id="basic-addon1"><i class="ti-id-badge"></i></span>
                                     </div>
                                     <input id="txtIdentificaicon" name="txtIdentificacion" type="text" class="form-control form-control-lg" placeholder="Identificacion">
                                 </div>
@@ -59,23 +64,29 @@
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
+                                        <span class="input-group-text" id="basic-addon1"><i class="ti-mobile"></i></span>
+                                    </div>
+                                    <input id="txtTelefono" name="txtTelefono" type="tel" class="form-control form-control-lg" placeholder="Teléfono">
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="ti-email"></i></span>
                                     </div>
                                     <input id="txtCorreo" name="txtCorreo" type="email" class="form-control form-control-lg" placeholder="Correo">
                                 </div>
 
-
-
-
-
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                        <span class="input-group-text" id="basic-addon2"><i class="ti-lock"></i></span>
                                     </div>
                                     <input id="txtContrasenna" name="txtContrasenna" type="password" class="form-control form-control-lg" placeholder="Contraseña" required>
                                 </div>
 
-
+                                <!-- Validar si hay algun error -->
+                                <?php if (isset($_GET["error"])): ?>
+                                    <p style="color: red;">Error al crear usuario. Intente nuevamente.</p>
+                                <?php endif; ?>
 
                                 <div class="form-group text-center">
                                     <div class="col-xs-12 p-b-20">

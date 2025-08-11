@@ -1,125 +1,297 @@
-/* Hero Banner */
+/* ===========================
+   Variables / Reset suave
+=========================== */
+:root {
+    --accent: #3bc9db;
+    /* color acento */
+    --accent-2: #845ef7;
+    /* acento secundario */
+    --ink: #1f2937;
+    /* texto principal */
+    --muted: #6b7280;
+    /* texto secundario */
+    --card-bg: rgba(255, 255, 255, .65);
+    --card-br: rgba(255, 255, 255, .35);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, .18);
+    --shadow-md: 0 12px 24px rgba(0, 0, 0, .12);
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===========================
+   HERO (full-bleed + overlay)
+=========================== */
 .about-hero {
     position: relative;
-    height: 70vh;
+    height: clamp(56vh, 70vh, 82vh);
     overflow: hidden;
+    border-radius: 22px;
+    box-shadow: var(--shadow-lg);
+    isolation: isolate;
+    /* para overlays */
+}
+
+/* extender al borde del container bootstrap */
+.hero-wide {
+    margin-left: calc(-1 * var(--bs-gutter-x, 1.5rem));
+    margin-right: calc(-1 * var(--bs-gutter-x, 1.5rem));
 }
 
 .hero-video {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.6);
+    pointer-events: none;
+    transform: scale(1.04);
+    /* sutil zoom inicial */
+    filter: saturate(1.1) contrast(1.02);
+    /* un poco más viva */
+    animation: heroZoom 18s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+/* Gradiente y viñeta sin tocar HTML */
+.about-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(120% 80% at 50% 20%, transparent 40%, rgba(0, 0, 0, .35) 72%, rgba(0, 0, 0, .6) 100%),
+        linear-gradient(to bottom, rgba(0, 0, 0, .05), rgba(0, 0, 0, .55));
+    z-index: 2;
 }
 
 .hero-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 3;
     text-align: center;
-    font-size: 2.8rem;
-    font-weight: bold;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding-inline: 1rem;
 }
 
-/* Sección general */
+.hero-text h1 {
+    font-size: clamp(1.8rem, 3.4vw + 1rem, 3rem);
+    font-weight: 800;
+    letter-spacing: .4px;
+    line-height: 1.12;
+    text-shadow: 0 8px 22px rgba(0, 0, 0, .55);
+    position: relative;
+}
+
+/* subrayado con gradiente */
+.hero-text h1::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: min(420px, 60%);
+    margin: 12px auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    box-shadow: 0 0 24px rgba(59, 201, 219, .45);
+}
+
+/* ===========================
+   Sección / bloques de texto
+=========================== */
 .about-section {
-    padding: 40px 20px;
+    padding: 40px 0 16px;
 }
 
 .about-block {
-    background: #fff;
-    padding: 30px;
-    margin: 30px 0;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: var(--card-bg);
+    border: 1px solid var(--card-br);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: clamp(20px, 2vw + 10px, 32px);
+    margin: 32px 0;
+    border-radius: 18px;
+    box-shadow: var(--shadow-md);
+    animation: fadeIn .8s ease both;
 }
 
-/* Divider */
+.about-block h2 {
+    font-weight: 800;
+    letter-spacing: .2px;
+    margin-bottom: .25rem;
+}
+
+.about-block h4 {
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: .75rem;
+}
+
 .divider {
-    width: 60px;
-    height: 4px;
-    background: #3498db;
-    border: none;
-    margin: 10px 0 20px;
+    width: 84px;
+    height: 5px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    box-shadow: 0 4px 16px rgba(132, 94, 247, .35);
+    margin: 10px 0 18px;
 }
 
-/* Consejo Asesor */
+/* ===========================
+   Consejo Asesor (grid)
+=========================== */
 .advisory-section h2 {
     text-align: center;
-    margin-bottom: 30px;
+    font-weight: 800;
+    margin: 12px 0 22px;
 }
 
 .advisors {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(14px, 2vw, 22px);
+    margin-bottom: 8px;
 }
 
 .advisor {
-    background: #f9f9f9;
-    padding: 20px;
-    width: 280px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(17, 24, 39, .06);
+    transition: transform .35s ease, box-shadow .35s ease;
 }
 
 .advisor:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 22px 48px rgba(17, 24, 39, .18);
 }
 
 .advisor img {
     width: 100%;
-    height: 180px;
+    height: 190px;
     object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 15px;
+    display: block;
+}
+
+.advisor h5 {
+    font-weight: 800;
+    margin: 12px 12px 2px;
+}
+
+.advisor .title {
+    margin: 0 12px 6px;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+.advisor p {
+    margin: 0 12px 10px;
+    color: #374151;
 }
 
 .advisor a {
     display: inline-block;
-    margin-top: 10px;
-    color: #3498db;
-    font-weight: bold;
+    margin: 0 12px 16px;
+    padding: 10px 14px;
+    font-weight: 700;
     text-decoration: none;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(59, 201, 219, .28);
+    transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease;
 }
 
 .advisor a:hover {
-    text-decoration: underline;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px rgba(132, 94, 247, .32);
 }
 
-/* Animaciones */
+.advisor a:focus-visible {
+    outline: 3px solid rgba(59, 201, 219, .5);
+    outline-offset: 3px;
+}
+
+/* ===========================
+   Animaciones
+=========================== */
+@keyframes heroZoom {
+    from {
+        transform: scale(1.04);
+    }
+
+    to {
+        transform: scale(1.12);
+    }
+}
+
 .animate-fade {
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn .9s ease both;
 }
 
 .animate-slide-up {
-    animation: slideUp 0.8s ease-in-out;
+    animation: slideUp .8s ease both;
 }
 
 @keyframes fadeIn {
     from {
-        opacity: 0;
+        opacity: 0
     }
 
     to {
-        opacity: 1;
+        opacity: 1
     }
 }
 
 @keyframes slideUp {
     from {
-        transform: translateY(30px);
-        opacity: 0;
+        transform: translateY(24px);
+        opacity: 0
     }
 
     to {
         transform: translateY(0);
-        opacity: 1;
+        opacity: 1
+    }
+}
+
+/* Respeto accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .hero-video {
+        animation: none;
+    }
+
+    .animate-fade,
+    .animate-slide-up {
+        animation: none;
+    }
+}
+
+/* ===========================
+   Responsivo fino
+=========================== */
+@media (max-width: 992px) {
+    .about-hero {
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-hero {
+        height: 52vh;
+        border-radius: 14px;
+    }
+
+    .advisor img {
+        height: 170px;
     }
 }

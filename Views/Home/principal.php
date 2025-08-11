@@ -1,5 +1,9 @@
 <?php
-
+    // Validación de si el usuario inició sesión (NO ELIMINAR, SOLO COMENTAR DE SER NECESARIO)
+    session_start();
+    if (!isset($_SESSION["usuario"])) {
+        header("Location: login.php");
+    }
 ?>
 
 <!DOCTYPE html>

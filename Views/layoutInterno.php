@@ -12,22 +12,14 @@ function ShowHeader()
                     </a>
 
                     <div class="navbar-brand">
-                        <a href="../Home/principal.php" class="logo">
-
+                        <a href="/LENGUAJES_ADMIN/index.php?controller=home&action=index" class="logo">
                             <b class="logo-icon">
-
-                                <img src="../Imagenes/logo-icon.png" alt="homepage" class="dark-logo" />
+                                <img src="/LENGUAJES_ADMIN/Views/Imagenes/logo-icon.png" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo icon -->
-                                <img src="../Imagenes/logo-light-icon.png" alt="homepage" class="light-logo" />
+                                <img src="/LENGUAJES_ADMIN/Views/Imagenes/logo-light-icon.png" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="../Imagenes/logo-text.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo text -->
-                                <img src="../Imagenes/logo-light-text.png" class="light-logo" alt="homepage" />
-                            </span>
+                            
                         </a>
                         <a class="sidebartoggler d-none d-md-block" href="javascript:void(0)" data-sidebartype="mini-sidebar">
                             <i class="mdi mdi-toggle-switch mdi-toggle-switch-off font-20"></i>
@@ -56,8 +48,10 @@ function ShowHeader()
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="../Imagenes/users/2.jpg" alt="user" class="rounded-circle" width="40">
-                                <span class="m-l-5 font-medium d-none d-sm-inline-block">Jonathan <i class="mdi mdi-chevron-down"></i></span>
+                            <span class="m-l-5 font-medium d-none d-sm-inline-block">
+                            <i class="mdi mdi-account"></i>
+                            <i class="mdi mdi-chevron-down"></i>
+                            </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                                 <span class="with-arrow">
@@ -65,9 +59,9 @@ function ShowHeader()
                                 </span>
 
                                 <div class="profile-dis scrollable">
-                                    <a class="dropdown-item" href="../Home/consultarPerfil.php">
+                                    <a class="dropdown-item" href="/LENGUAJES_ADMIN/Views/Home/consultarPerfil.php">
                                         <i class="ti-user m-r-5 m-l-5"></i>Mi perfil</a>
-                                    <a class="dropdown-item" href="javascript:void(0)">
+                                    <a class="dropdown-item" href="/LENGUAJES_ADMIN/Views/Home/logout.php">
 
                                         <i class="ti-wallet m-r-5 m-l-5"></i> Cerrar Sesion</a>
 
@@ -100,19 +94,19 @@ function ShowHeader()
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="sidebar-item" style="margin-bottom: 10px;"> 
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Home/principal.php" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/LENGUAJES_ADMIN/index.php?controller=home&action=index" aria-expanded="false">
                         <i class="fa fa-arrow-left" aria-hidden="true"></i>
                         <span class="hide-menu">Volver al Inicio</span>
                     </a>
                 </li>
                 <li class="sidebar-item" style="margin-bottom: 10px;"> 
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Home/menu.php" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/LENGUAJES_ADMIN/index.php?controller=home&action=menu" aria-expanded="false">
                         <i class="fa fa-coffee" aria-hidden="true"></i>
                         <span class="hide-menu">Menu</span>
                     </a>
                 </li>
                 <li class="sidebar-item" style="margin-bottom: 10px;">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Reservas/reservas.php" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/LENGUAJES_ADMIN/index.php?controller=reserva&action=index" aria-expanded="false">
                         <i class="fa fa-cutlery"></i>
                         <span class="hide-menu">Reservar Mesa</span>
                     </a>
@@ -130,17 +124,19 @@ function ShowHeader()
     function AddJs()
     {
         echo '
-    <script src="../Funciones/jquery.min.js"></script>
-    <script src="../Funciones/popper.min.js"></script>
-    <script src="../Funciones/bootstrap.min.js"></script>
-    <script src="../Funciones/app.min.js"></script>
-    <script src="../Funciones/app.init.js"></script>
-    <script src="../Funciones/app-style-switcher.js"></script>
-    <script src="../Funciones/perfect-scrollbar.jquery.min.js"></script>
-    <script src="../Funciones/sparkline.js"></script>
-    <script src="../Funciones/waves.js"></script>
-    <script src="../Funciones//sidebarmenu.js"></script>
-    <script src="../Funciones//custom.min.js"></script>';
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/jquery.min.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/popper.min.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/bootstrap.min.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/app.min.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/app.init.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/app-style-switcher.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/sparkline.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/waves.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones//sidebarmenu.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/perfil.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones//custom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>';
     }
 }
 
@@ -156,7 +152,7 @@ function AddCss()
     <title>Kerat Restaurante</title>
     
 
-    <link href="../Estilos/style.min.css" rel="stylesheet">
+    <link href="/LENGUAJES_ADMIN/Views/Estilos/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
