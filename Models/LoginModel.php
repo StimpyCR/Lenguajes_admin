@@ -4,8 +4,11 @@
     // Importamos Config
     require_once __DIR__.'/../Config/database.php';
 
+    // Importamos Model de Usuarios
+    require_once __DIR__.'/../Models/UsuarioModel.php';
+
     // Clase
-    class Login {
+    class LoginModel {
         // Atributos
         private $conn;
 
@@ -22,16 +25,16 @@
                     END;';
             $stmt = oci_parse($this -> conn, $sql);
 
-            $idUsuario = null;
-            $nombre = null;
-            $idRol = null;
-            $idEstado = null;
+            $idUsuario = 0;
+            $nombre = '';
+            $idRol = 0;
+            $idEstado = 0;
 
-            oci_bind_by_name($stmt, ':correo', $correo);                // IN
-            oci_bind_by_name($stmt, ':idUsuario', $idUsuario);          // OUT
-            oci_bind_by_name($stmt, ':nombre', $nombre);                // OUT
-            oci_bind_by_name($stmt, ':idRol', $idRol);                  // OUT
-            oci_bind_by_name($stmt, ':idEstado', $idEstado);            // OUT
+            oci_bind_by_name($stmt, ':correo', $correo, 4000);                // IN
+            oci_bind_by_name($stmt, ':idUsuario', $idUsuario, 4000);          // OUT
+            oci_bind_by_name($stmt, ':nombre', $nombre, 4000);                // OUT
+            oci_bind_by_name($stmt, ':idRol', $idRol, 4000);                  // OUT
+            oci_bind_by_name($stmt, ':idEstado', $idEstado, 4000);            // OUT
 
             oci_execute($stmt);
 
@@ -48,7 +51,9 @@
                 if (oci_execute($stmtClave)) {
                     // Validar estado y contraseña
                     if ($idEstado == 1 && $contrasenaDesencriptada === $contrasenaIngresada) {
-                        $_SESSION["usuario"] = ["nombre" => $nombre, "rol" => $idRol, "id" => $idUsuario];
+                        $model = new UsuarioModel();
+
+                        $_SESSION["usuario"] = $model -> obtenerUsuario($idUsuario);
                         return true;
                     }
                 }

@@ -3,7 +3,7 @@
     require_once __DIR__.'/../Config/database.php';
 
     // Creamos clase
-    class Producto {
+    class ProductoModel {
         // Atributos
         private $conn;
 
@@ -20,9 +20,12 @@
                     END;";
             $stmt = oci_parse($this->conn, $sql);
 
-            oci_bind_by_name($stmt, ":idProducto", 0);   // Se asigna automático, entonces enviamos 0 solo para que no de error
+            $idProducto = 0;
+            $idEstado = 1;
+
+            oci_bind_by_name($stmt, ":idProducto", $idProducto);   // Se asigna automático, entonces enviamos 0 solo para que no de error
             oci_bind_by_name($stmt, ":idCategoria", $idCategoria);
-            oci_bind_by_name($stmt, ":idEstado", 1);
+            oci_bind_by_name($stmt, ":idEstado", $idEstado);
             oci_bind_by_name($stmt, ":nombre", $nombre);
             oci_bind_by_name($stmt, ":descripcion", $descripcion);
             oci_bind_by_name($stmt, ":precio", $precio);
@@ -75,8 +78,50 @@
             oci_free_statement($stmt);
         }
 
-        
+        public function obtenerProductos () {
+            $productos = [];
+            $idProducto = 1;
 
-        
+            while (true) {
+                $sql = "BEGIN
+                            FIDE_PK_KERAT_PKG.FIDE_OBTENER_PRODUCTOS_SP(:idProducto, :categoria, :estado, :nombre, :descripcion, :precio);
+                        END;";
+
+                $stmt = oci_parse($this->conn, $sql);
+                    
+                $categoria = "";
+                $estado = "";
+                $nombre = "";
+                $descripcion = "";
+                $precio = 0.00;
+                                
+                oci_bind_by_name($stmt, ":idProducto", $idProducto, 4000);        // In
+                oci_bind_by_name($stmt, ":categoria", $categoria, 4000);          // Out
+                oci_bind_by_name($stmt, ":estado", $estado, 4000);                // Out
+                oci_bind_by_name($stmt, ":nombre", $nombre, 4000);                // Out
+                oci_bind_by_name($stmt, ":descripcion", $descripcion, 4000);      // Out
+                oci_bind_by_name($stmt, ":precio", $precio, 4000);                // Out
+                                
+                oci_execute($stmt);
+                
+                if ($nombre === null && $precio === null){
+                    break;
+                } 
+
+                $productos[] = [
+                    "id" => $idProducto,
+                    "categoria" => $categoria,
+                    "estado" => $estado,
+                    "nombre" => $nombre,
+                    "descripcion" => $descripcion,
+                    "precio" => $precio
+                ];
+                
+                $idProducto++;
+            }
+                
+            oci_free_statement($stmt);
+            return $productos;
+        }
     }
 ?>

@@ -12,7 +12,7 @@ function AddCss()
     <meta name="author" content="">
     <title>Login | Kerat</title>
 
-    <link href="../Estilos/style.min.css" rel="stylesheet">
+    <link href="/LENGUAJES_ADMIN/Views/Estilos/style.min.css" rel="stylesheet">
 
 </head>';
 
@@ -20,8 +20,8 @@ function AddCss()
     function AddJs()
     {
         echo '
-    <script src="../Funciones/jquery.min.js"></script>
-    <script src="../Funciones/popper.min.js"></script>
-    <script src="../Funciones/bootstrap.min.js"></script>';
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/jquery.min.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/popper.min.js"></script>
+    <script src="/LENGUAJES_ADMIN/Views/Funciones/bootstrap.min.js"></script>';
     }
 }
